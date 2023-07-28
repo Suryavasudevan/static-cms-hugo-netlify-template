@@ -1,0 +1,78 @@
+{
+  "build": {
+   "env": {
+     "HUGO_VERSION": "0.98.0"
+   }
+ },
+ "cleanUrls": true,
+ "trailingSlash": true,
+ "redirects": [
+   { "source": "/india/ahmedabad-special-court-sentenced-killers-to-life-time-jail-punishment-20220218/", "destination": "/trending/ahmedabad-special-court-sentenced-killers-to-life-time-jail-punishment-20220218/" },
+   { "source": "/cinema/divya-bharathi-recent-clicks-new-hot-saree-20220430/", "destination": "/" },
+   { "source": "/cinema/shruti-haasan-new-hot-clicks-20220425/", "destination": "/" },
+   { "source": "/:path*-202109:path*", "destination": "/" },
+   { "source": "/:path*-202110:path*", "destination": "/" },
+   { "source": "/:path*-202111:path*", "destination": "/" },
+   { "source": "/:path*-202112:path*", "destination": "/" },
+   { "source": "/:path*-202201:path*", "destination": "/" },
+   { "source": "/:path*-202202:path*", "destination": "/" },
+   { "source": "/terms/", "destination": "/terms-and-conditions/" },
+   { "source": "/cinema/priyanka-mohan-new-hot-photos-20220407/", "destination": "/cinema/" },
+   { "source": "/cinema/chanthini-sidhu-santhanu-movie-frame-20220407/", "destination": "/cinema/" },
+   { "source": "/cinema/pathala-pathala-song-nochipatti-thirumoorthi-20220621/", "destination": "/cinema/pathala-pathala-song-nochipatti-thirumoorthi-recreation-20220621/" },
+   { "source": "/cinema/sriya-reddy-latest-hot-clicks-20220621/", "destination": "/cinema/sriya-reddy-latest-hot-photos-20220621/" },
+   { "source": "/cinema/ajith-europe-trip-photos-viral-20220621/", "destination": "/cinema/ajith-europe-trip-viral-photos-20220621/" },
+   { "source": "/cinema/vani-bhojan-latest-photos-viral-20220620/", "destination": "/cinema/vani-bhojan-latest-viral-photos-20220620/" },
+   { "source": "/cinema/anupama-hot-pose-morning-viral-20220508/", "destination": "/cinema/" },
+   { "source": "/cinema/Keira-rathore-hot-beach-clicks-20220401/", "destination": "/cinema/" },
+   { "source": "/cinema/parvathi-nair-new-hot-photos-20220408/", "destination": "/cinema/" },
+   { "source": "/cinema/mk-stalin-g20-delhi-20221204/", "destination": "/trending/mk-stalin-g20-delhi-20221204/" },
+   { "source": "/trending/mamakutty-latest-video-viral-20221207/", "destination": "/cinema/mamakutty-latest-video-viral-20221207/" },
+   { "source": "/trending/sol-ponniyil-selvan-video-viral-20221209/", "destination": "/cinema/sol-ponniyil-selvan-video-viral-20221209/" },
+   { "source": "/privacy/", "destination": "/privacy-policy/" },
+   { "source": "/cinema/nivetha-pethuraj-new-video-20220801", "destination": "/cinema/nivetha-pethuraj-new-video-20220801/" },
+   { "source": "/cinema/emoji-teaser-video-viral-20220723", "destination": "/cinema/emoji-teaser-video-viral-20220723/" },
+   { "source": "/cinema/keerthy-suresh-new-clicks-20220731", "destination": "/cinema/keerthy-suresh-new-clicks-20220731/" },
+   { "source": "/trending/anbumani-ramadoss-statement-neet-20220708", "destination": "/trending/anbumani-ramadoss-statement-neet-20220708/" },
+   { "source": "/cinema/vikram-pa-ranjith-project-update-20220803", "destination": "/cinema/vikram-pa-ranjith-project-update-20220803/" },
+   { "source": "/cinema/priya-varrier-new-clicks-20220713", "destination": "/cinema/priya-varrier-new-clicks-20220713/" },
+   { "source": "/cinema/pooja-hegde-new-hot-20220727", "destination": "/cinema/pooja-hegde-new-hot-20220727/" },
+   { "source": "/cinema/galatta-awards-video-trending-manikandan-20220625", "destination": "/cinema/galatta-awards-video-trending-manikandan-20220625/" },
+   { "source": "/cinema/vedhika-tamil-new-clicks-20220803", "destination": "/cinema/vedhika-tamil-new-clicks-20220803/" },
+   { "source": "/cinema/rajinikanth-phone-call-to-rakshit-20220622", "destination": "/cinema/rajinikanth-phone-call-to-rakshit-20220622/" },
+   { "source": "/cinema/anagha-tamil-new-clicks-20220812", "destination": "/cinema/anagha-tamil-new-clicks-20220812/" },
+   { "source": "/cinema/ajith-latest-video-police-training-20220727", "destination": "/cinema/ajith-latest-video-police-training-20220727/" },
+   { "source": "/cinema/vijay-deverakonda-photos-viral-20220729", "destination": "/cinema/vijay-deverakonda-photos-viral-20220729/" },
+   { "source": "/cinema/pavithra-lakshmi-latest-clicks-20220820", "destination": "/cinema/pavithra-lakshmi-latest-clicks-20220820/" },
+   { "source": "/trending/ptr-press-meet-video-20220813", "destination": "/trending/ptr-press-meet-video-20220813/" },
+   { "source": "/cinema/nazriya-tamil-new-make-up-hot-20220826", "destination": "/cinema/nazriya-tamil-new-make-up-hot-20220826/" },
+   { "source": "/cinema/divya-bharathi-new-hot-video-viral-20220905", "destination": "/cinema/divya-bharathi-new-hot-video-viral-20220905/" },
+   { "source": "/cinema/shreya-goshal-photo-video-20220902", "destination": "/cinema/shreya-goshal-photo-video-20220902/" },
+   { "source": "/cinema/simran-latest-photos-viral-20220623", "destination": "/cinema/simran-latest-photos-viral-20220623/" },
+   { "source": "/cinema/samantha-lifestyle-ideas-20220606", "destination": "/cinema/samantha-lifestyle-ideas-20220606/" },
+   { "source": "/cinema/vijay-appadi-podu-video-viral-20220824", "destination": "/cinema/vijay-appadi-podu-video-viral-20220824/" }
+ ],
+ "headers": [
+   {
+     "source": "/(.*)",
+     "headers": [
+       {
+         "key": "X-Frame-Options",
+         "value": "SAMEORIGIN"
+       },
+       {
+         "key": "X-XSS-Protection",
+         "value": "1; mode=block"
+       },
+       {
+         "key": "X-Content-Type-Options",
+         "value": "nosniff"
+       },
+       {
+         "key": "Strict-Transport-Security",
+         "value": "max-age=31536000"
+        }
+      ]
+    }
+  ]
+}

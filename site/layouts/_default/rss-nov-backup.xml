@@ -1,0 +1,57 @@
+{{- $pctx := . -}}
+{{- if .IsHome -}}{{ $pctx = .Site }}{{- end -}}
+{{- $pages := slice -}}
+{{- if or $.IsHome $.IsSection -}}
+{{- $pages = $pctx.RegularPages -}}
+{{- else -}}
+{{- $pages = $pctx.Pages -}}
+{{- end -}}
+{{- $limit := .Site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 1 -}}
+{{- $pages = $pages | first $limit -}}
+{{- end -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+  <channel>
+    <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}{{ end }}</title>
+		{{- with .OutputFormats.Get "RSS" -}}
+		{{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+		{{- end -}}
+    <link>{{ .Site.Data.contact.url }}{{ .RelPermalink }}</link>
+    <description>Recent content {{ if ne  .Title  .Site.Title }}{{ with .Title }}in {{.}} {{ end }}{{ end }}on {{ .Site.Title }}</description>{{ if not .Date.IsZero }}
+    <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
+    <language>en-US</language>
+		<sy:updatePeriod> hourly </sy:updatePeriod>
+		<sy:updateFrequency> 1 </sy:updateFrequency>
+
+		<image>
+			<url>{{ .Site.Data.contact.url }}/images/favicon-16x16.png</url>
+			<title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}{{ end }}</title>
+			<link>{{ .Site.Data.contact.url }}{{ .RelPermalink }}</link>
+			<width>32</width>
+			<height>32</height>
+		</image>
+
+    {{ range first 10 $pages }}
+    <item>
+      <title>{{ htmlEscape .Params.heading }}</title>
+      <link>{{ .Site.Data.contact.url }}{{ .RelPermalink }}</link>
+			<dc:creator>{{ `<![CDATA[` | safeHTML }}{{ .Params.authors | safeHTML }}{{ `]]>` | safeHTML }}</dc:creator>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <category>{{ `<![CDATA[` | safeHTML }}{{ humanize .Params.categories }}{{ `]]>` | safeHTML }}</category>{{ range .Params.tags }}
+			<category>{{ `<![CDATA[` | safeHTML }}{{ humanize . }}{{ `]]>` | safeHTML }}</category>{{ end }}
+			<guid isPermaLink="false">{{ .Site.Data.contact.url }}{{ .RelPermalink }}</guid>
+			<description>{{ `<![CDATA[` | safeHTML }}{{ `<img src="` | safeHTML }}{{ .Site.Data.contact.url }}{{ .Params.preview_image }}{{ `"  style="width: 100%;" alt="` | safeHTML }}{{ humanize .Params.title }}{{ `"/>` | safeHTML }}{{ .Summary | html }}{{ `]]>` | safeHTML }}</description>
+			<content:encoded>{{ `<![CDATA[` | safeHTML }}{{ `<img src="` | safeHTML }}{{ .Site.Data.contact.url }}{{ .Params.preview_image }}{{ `"  style="width: 100%;" alt="` | safeHTML }}{{ humanize .Params.title }}{{ `"/>` | safeHTML }}{{- replace .Content "/images" "https://masalaglitz.in/images" | safeHTML -}}{{ `]]>` | safeHTML }}</content:encoded>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="{{ .Site.Data.contact.url }}{{ .Params.preview_image }}" medium="image" type="image/jpeg" width="1200" height="630" />
+    </item>
+    {{ end }}
+  </channel>
+</rss>

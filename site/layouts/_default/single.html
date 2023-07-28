@@ -1,6 +1,157 @@
 {{ define "main" }}
+<article class="section-card">
+  <div>
+    <!-- Breadcrumb -->
+    <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb w-list-unstyled">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="/">
+          <span itemprop="name">Home</span>
+        </a>
+        <meta itemprop="position" content="1" />
+      </li>
+      <div class="arrow">&nbsp;»&nbsp;</div>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="/{{ .Params.categories }}" class="category">
+          <span itemprop="name">{{ humanize .Params.categories }}</span>
+        </a>
+        <meta itemprop="position" content="2" />
+      </li>
+    </ul>
 
-{{ partial "jumbotron" (dict "imageUrl" "/img/7.jpg" "title" "This is where the heading goes" "subtitle" "This is where the subtitle goes") }}
-{{ .Content }}
+    <!-- Hero -->
+    <h1>{{ .Params.heading }}</h1>
+    <div class="article-meta">
+      <div class="author">By <a href="/author/{{ .Params.authors | urlize }}">{{ .Params.authors }}</a></div>
+      <time datetime="{{ .Params.date }}">{{ .Params.date | time.Format ":date_long" }}</time>
+    </div>
+    <figure class="figure post article-img">
+      <!-- <img class="fade-in" loading="lazy" src="{{ .Params.preview_image }}" alt="{{ humanize .Params.title }}" /> -->
+      <img src="{{ .Params.preview_image }}" alt="{{ humanize .Params.title }}" />
+    </figure>
 
+    <div >
+      <!-- Under Thumbnail -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4727182780685064"
+           data-ad-slot="7514438023"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+  {{ .Content }}
+  <div class="gnews-wrap w-inline-block">
+    <a href="https://news.google.com/publications/CAAqBwgKMMKMtwswz6fOAw?ceid=IN:en&oc=3" target="_blank" class="gnews">
+      <span>Follow us on</span>
+      <img src="/images/gnews.png" loading="lazy" class="gnews-logo"/>
+    </a>
+  </div>
+  <div class="code">
+    {{ .Params.code | safeHTML }}
+  </div>
+
+  <!-- Tagging -->
+  <ul role="list" class="tags w-list-unstyled">
+    <li class="popular-tag inner title"><span>Tags</span></li>
+    {{ $tags := slice .Params.tags }}{{ range .Params.tags }}
+    <li class="popular-tag inner"><a href="{{ "/tag/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+    {{ end }}
+  </ul>
+
+  <!-- Sharing -->
+  <div class="social-share-wrap">
+    <div id="w-node-_8d389ffc-f74e-94d9-c6f5-b5b7b0278b64-27c696ac" class="share-icon">
+      <div>Share</div><img src="/images/share.svg" loading="lazy" alt="" class="social-icon share" />
+    </div>
+    <div class="facebook"><a href="https://www.facebook.com/sharer.php?u={{ .Site.Data.contact.url }}{{ .RelPermalink }}" target="_blank" class="social-wrap share w-inline-block">
+        <div class="social-icon share"><img src="/images/facebook.svg" loading="lazy" alt="" /></div>
+      </a></div>
+    <div class="twitter"><a href="https://twitter.com/intent/tweet?url={{ .Site.Data.contact.url }}{{ .RelPermalink }}&text={{ .Params.heading }}" target="_blank" class="social-wrap share w-inline-block">
+        <div class="social-icon share"><img src="/images/twitter.svg" loading="lazy" alt="" /></div>
+      </a></div>
+    <div class="whatsapp"><a href="https://api.whatsapp.com/send?text={{ .Params.heading }} | {{ .Site.Data.contact.url }}{{ .RelPermalink }}" target="_blank" class="social-wrap share w-inline-block">
+        <div class="social-icon share"><img src="/images/whatsapp-brands.svg" loading="lazy" alt="" /></div>
+      </a></div>
+    <div class="telegram"><a href="https://t.me/share/url?url={{ .Site.Data.contact.url }}{{ .RelPermalink }}&text={{ .Params.heading }}" target="_blank" class="social-wrap share w-inline-block">
+        <div class="social-icon share"><img src="/images/telegram.svg" loading="lazy" alt="" /></div>
+      </a></div>
+  </div>
+
+  </div>
+</article>
+
+<div class="ad">
+  <!-- After Section -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4727182780685064"
+       data-ad-slot="2123472949"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script data-cfasync="false">
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+<!-- Related Posts -->
+<div class="section-card">
+  <div class="section-tite-wrap">
+    <h3 class="section-title">Related Posts</h3><a href="/{{ .Params.categories }}">View all</a>
+  </div>
+  <div class="section-content-c2">
+    {{ $cat := .Params.categories }}
+    {{ $related := .Site.RegularPages.Related . | first 8 }}
+	  {{ range $related }}
+    <article class="article verti"> <a href="{{ .RelPermalink }}" title="{{ .Params.heading }}" class="img-block w-inline-block">
+        <figure class="figure vereti">
+          <img src="{{ .Params.preview_image }}" loading="lazy" class="img" alt="{{ humanize .Params.title }}" />
+        </figure>
+        <div class="category-desc">{{ humanize .Params.categories }}</div>
+      </a>
+      <div>
+        <h2 class="heading-small"> <a href="{{ .RelPermalink }}" title="{{ .Params.heading }}">{{ .Params.heading }}</a></h2>
+        <div class="article-meta">
+          <div class="author">By  <a href="/author/{{ .Params.authors | urlize }}">{{ .Params.authors }}</a></div>
+          <time datetime="{{ .Params.date }}">{{ .Params.date | time.Format ":date_long" }}</time>
+        </div>
+      </div>
+    </article>
+    {{ end }}
+
+    <!-- In-Feed ADs -->
+    <!-- <div>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-format="fluid"
+           data-ad-layout-key="-6t+ed+2i-1n-4w"
+           data-ad-client="ca-pub-4727182780685064"
+           data-ad-slot="1789265177"></ins>
+      <script data-cfasync="false">
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div> -->
+
+    <!-- {{ $related := .Site.RegularPages.Related . | after 5 }}
+	  {{ range first 4 $related }}
+    <article class="article verti"> <a href="{{ .RelPermalink }}" title="{{ .Params.heading }}" class="img-block w-inline-block">
+        <figure class="figure vereti">
+          <img src="{{ .Params.preview_image }}" loading="lazy" class="img" alt="{{ humanize .Params.title }}" />
+        </figure>
+        <div class="category-desc">{{ humanize .Params.categories }}</div>
+      </a>
+      <div>
+        <h2 class="heading-small"> <a href="{{ .RelPermalink }}" title="{{ .Params.heading }}">{{ .Params.heading }}</a></h2>
+        <div class="article-meta">
+          <div class="author">By  <a href="/author/{{ .Params.authors | urlize }}">{{ .Params.authors }}</a></div>
+          <time datetime="{{ .Params.date }}">{{ .Params.date | time.Format ":date_long" }}</time>
+        </div>
+      </div>
+    </article>
+    {{ end }} -->
+
+  </div>
+</div>
 {{ end }}

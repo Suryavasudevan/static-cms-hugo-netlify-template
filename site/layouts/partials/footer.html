@@ -1,51 +1,82 @@
-<footer class="bg-black ph3 pv4 white">
+<!-- Taboola ADs -->
+<div class="container">
+  <div id="taboola-below-article-thumbnails"></div>
+  <script defer type="text/javascript">
+    window._taboola = window._taboola || [];
+    _taboola.push({
+      mode: 'thumbnails-a',
+      container: 'taboola-below-article-thumbnails',
+      placement: 'Below Article Thumbnails',
+      target_type: 'mix'
+    });
+  </script>
+</div>
 
-	<div class="mw7 center pt3">
-
-		<div class="measure-narrow center mb4">
-
-			<img src="/img/logo.svg" alt="Kaldi logo" class="db w4 center mb4 br0">
-			<p class="f3 lh-title light-gray b tc mb2">Newsletter subscribe</p>
-			<p>Get awesome news from us in your inbox every two weeks. Be the first to learn about new products.</p>
-
-			{{ partial "newsletter-form" . }}
-
-		</div>
-
-		<div class="flex-ns justify-between">
-
-			<div>
-				<h3 class="f4 b lh-title mb1 primary">Kaldi</h3>
-				<ul class="mb3">
-					<li><a href="/" class="link">Home</a></li>
-					<li><a href="/products" class="link">Our products</a></li>
-					<li><a href="/values" class="link">About</a></li>
-					<li><a href="/post" class="link">Blog</a></li>
-					<li><a href="/contact" class="link">Contact</a></li>
-				</ul>
-			</div>
-
-			<div>
-				<h3 class="f4 b lh-title mb1 primary">Find out more</h3>
-				<ul class="mb3">
-					<li><a href="/post/jamaica-blue/" class="link">Latest offers</a></li>
-					<li><a href="/contact" class="link">Schedule and appointment</a></li>
-				</ul>
-			</div>
-
-			<div>
-				<h3 class="f4 b lh-title mb2 primary">Social media</h3>
-				<ul class="mhn2">
-					{{ partial "social-icon" (dict "link" "#" "svg" "icons-facebook") }}
-					{{ partial "social-icon" (dict "link" "#" "svg" "icons-twitter") }}
-					{{ partial "social-icon" (dict "link" "#" "svg" "icons-instagram") }}
-					{{ partial "social-icon" (dict "link" "#" "svg" "icons-vimeo") }}
-				</ul>
-			</div>
-
-		</div>
-	</div>
-
+<footer class="footer">
+  <div class="container">
+    <div class="div-block"><a href="/" class="w-inline-block"><img src="/images/malasaglitz-logo-white.svg" loading="lazy" alt="MasalaGlitz" class="brand-logo" /></a>
+      <div>
+        <h3>About Us</h3>
+        <p class="grey para">“மசாலா க்ளிட்ஸ்” 2020ம் ஆண்டு ஆகஸ்ட் மாதம் தொடங்கப்பட்ட, தமிழ்நாடு,அரசியல் மற்றும் சினிமாவை சம்மந்தப்பட்ட செய்திகள், கிசு கிசுக்கள், உலக செய்திகள் அனைத்தையும் உள்ளடக்கி எங்க சமூக வலைத்தளங்கள் மூலம் இன்றைய தேதிக்கு சுமார் ஐம்பதாயிரம் பார்வையாளர்கள் நம் வலைத்தளத்திற்கு வந்த வண்ணம் உள்ளனர்.</p>
+      </div>
+      <div id="w-node-_2f929d29-b379-00c2-bb7a-3d1b29818206-27c696ac" class="footer-social">
+        <div class="facebook"><a href="{{ .Site.Data.contact.facebook }}" target="_blank" class="social-wrap share w-inline-block">
+            <div class="social-icon share"><img src="/images/facebook.svg" loading="lazy" alt="" /></div>
+          </a></div>
+        <div class="twitter"><a href="{{ .Site.Data.contact.twitter }}" target="_blank" class="social-wrap share w-inline-block">
+            <div class="social-icon share"><img src="/images/twitter.svg" loading="lazy" alt="" /></div>
+          </a></div>
+        <div class="instagram"><a href="{{ .Site.Data.contact.instagram }}" target="_blank" class="social-wrap share w-inline-block">
+            <div class="social-icon share"><img src="/images/instagram.svg" loading="lazy" alt="" /></div>
+          </a></div>
+        <div class="telegram"><a href="{{ .Site.Data.contact.telegram }}" target="_blank" class="social-wrap share w-inline-block">
+            <div class="social-icon share"><img src="/images/telegram.svg" loading="lazy" alt="" /></div>
+          </a></div>
+      </div>
+    </div>
+    <div class="footer-menu-wrap">
+      <nav>
+        <ul role="list" class="footer-menu-link w-list-unstyled">
+          <li><a href="/about" class="footer-link">About Us</a></li>
+          <li><a href="/contact-us" class="footer-link">Contact Us</a></li>
+          <li><a href="/privacy-policy" class="footer-link">Privacy Policy</a></li>
+          <li><a href="/disclaimer" class="footer-link">Disclaimer</a></li>
+          <li><a href="/terms-and-conditions" class="footer-link">Terms & Conditions</a></li>
+        </ul>
+      </nav>
+      <div class="grey">© 2022 MasalaGlitz. All rights reserved.</div>
+    </div>
+  </div>
 </footer>
+</div>
 
-{{ partial "svg" . }}
+{{ $main := resources.Get "css/main.min.css" }}
+{{ $manual := resources.Get "css/manual.min.css" }}
+{{ $custom := resources.Get "css/custom.min.css" }}
+{{ $css := slice $main $manual $custom | resources.Concat "css/style.min.css" }}
+<link href="{{ $css.RelPermalink }}?v3" rel="stylesheet" type="text/css" />
+
+<!-- Taboola Footer Code -->
+<script defer type="text/javascript">
+  window._taboola = window._taboola || [];
+  _taboola.push({flush: true});
+</script>
+
+<!-- Push Notification -->
+<!-- <script defer type="application/javascript" src="https://sdki.truepush.com/sdk/v2.0.3/app.js" async></script>
+<script defer>
+var truepush = window.truepush || [];
+
+truepush.push(function(){
+    truepush.Init({
+        id: "6231d918dc0087aea93d55ed"
+    },function(error){
+      if(error) console.error(error);
+    })
+})
+</script> -->
+
+<!-- {{ $js := resources.Get "js/manual.js" }}
+<script src="{{ $js.RelPermalink }}"></script> -->
+</body>
+</html>

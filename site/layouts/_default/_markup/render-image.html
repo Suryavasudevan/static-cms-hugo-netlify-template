@@ -1,0 +1,6 @@
+  <!-- <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" class="img" />  -->
+<div>
+  <figure class="article-img">
+    <img loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ humanize .Page.Params.title }}"/>
+  </figure>
+</div>

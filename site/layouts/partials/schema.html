@@ -1,0 +1,35 @@
+{{ if .Params.preview_image }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": {
+  "@type": "WebPage",
+  "@id": "{{ .Site.Data.contact.url }}{{ .RelPermalink }}"
+},
+  "headline": "{{ .Params.heading }}",
+  "image": "{{ .Site.Data.contact.url }}{{ .Params.preview_image }}",
+  "datePublished": "{{ .Params.date | time.Format ":date_long" }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Params.authors }}",
+    "url": "{{ .Site.Data.contact.url }}/author/{{ .Params.authors | urlize }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MasalaGlitz",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://masalaglitz.in/images/malasaglitz-logo.svg"
+    }
+  },
+  "keywords": [],
+  "dateModified": "{{ .Params.date | time.Format ":date_long" }}",
+  "thumbnailUrl": "{{ .Site.Data.contact.url }}{{ .Params.preview_image }}",
+  "creator": {},
+  "dateCreated": {},
+  "url": "{{ .Site.Data.contact.url }}{{ .RelPermalink }}",
+  "articleSection": "{{ humanize .Params.categories }}"
+}
+</script>
+{{ end }}

@@ -1,9 +1,65 @@
-baseurl = "/"
-languageCode = "en-us"
-languageLang = "en"
-title = "Homepage"
+baseURL = ''
+languageCode = 'en-us'
+title = 'MasalaGlitz'
+summaryLength = 10
+paginate = 45
 
-# RSS, categories and tags disabled for an easy start
-# See configuration options for more details: 
-# https://gohugo.io/getting-started/configuration/#toml-configuration
-disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
+[params]
+  description = "We bring the latest happenings, we entertain people through our cinema news, movie release dates, shooting and actor/actress galleries, trending content, and so on."
+
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+
+  [[related.indices]]
+    name = "categories"
+    weight = 100
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "cinema"
+    name = "Cinema"
+    url = "/cinema/"
+    weight = 2
+  [[menu.main]]
+    identifier = "trending"
+    name = "Trending"
+    url = "/trending/"
+    weight = 3
+  # [[menu.main]]
+  #   identifier = "gallery"
+  #   name = "Gallery"
+  #   url = "/gallery/"
+  #   weight = 4
+  [[menu.main]]
+    identifier = "sports"
+    name = "Sports"
+    url = "/sports/"
+    weight = 4
+
+disableKinds = ["taxonomyTerm"]
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  author = 'authors'
+
+[permalinks]
+  cinema = ':section/:title-:year:month:day'
+  trending = ':section/:title-:year:month:day'
+  # gallery = ':section/:title-:year:month:day'
+  sports = ':section/:title-:year:month:day'
+  categories = "/:slug"
+  tags = "tag/:slug"
+  authors = "author/:slug"
+
+[outputFormats]
+  [outputFormats.RSS]
+    mediatype = "application/rss"
+    baseName = "feed"

@@ -1,0 +1,48 @@
+{{ define "main" }}
+<!-- Tags page -->
+<div class="section-card">
+  <div class="section-tite-wrap">
+    <h1 class="section-title large">{{ humanize .Title }}</h1>
+  </div>
+  <div class="section-content-c3">
+    {{ $paginator := .Paginate .RegularPagesRecursive }}
+    {{ range $paginator.Pages }}
+    <article class="article verti"> <a href="{{ .Permalink }}" title="{{ .Params.heading }}" class="img-block w-inline-block">
+        <figure class="figure recent">
+          <img src="{{ .Params.preview_image }}" loading="lazy" alt="{{ humanize .Params.title }}" class="img" />
+        </figure>
+        <div class="category-desc">{{ humanize .Params.categories }}</div>
+      </a>
+      <div>
+        <h2 class="heading-small"> <a href="{{ .Permalink }}" title="{{ .Params.heading }}">{{ .Params.heading }}</a></h2>
+        <div class="article-meta">
+          <div class="author">By  <a href="/author/{{ .Params.authors | urlize }}">{{ .Params.authors }}</a></div>
+          <time datetime="{{ .Params.date }}">{{ .Params.date | time.Format ":date_long" }}</time>
+        </div>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+
+  {{ $pag := $.Paginator }}
+  {{ if gt $pag.TotalPages 1 }}
+  <ul role="list" class="pagination w-list-unstyled">
+        {{ if $pag.HasPrev  }}
+        <li class="popular-tag"><a href="{{ $pag.Prev.URL }}">«&nbsp;Prev</a></li>
+        {{ end }}
+
+        {{ range $pag.Pagers }}
+            {{ if eq . $pag }} <!-- Current Page -->
+            <li><a href="{{ .URL }}" class="popular-tag selected">{{ .PageNumber }}</a></li>
+            {{ else if and (ge .PageNumber (sub $pag.PageNumber 2)) (le .PageNumber (add $pag.PageNumber 2)) }}
+            <!-- Render prev 2 page and next 2 pages -->
+            <li><a href="{{ .URL }}" class="popular-tag">{{ .PageNumber }}</a></li>
+            {{ end }}
+        {{ end }}
+
+        {{ if $pag.HasNext }}
+        <li class="popular-tag"><a href="{{ $pag.Next.URL }}">Next&nbsp;»</a></li>
+        {{ end }}
+    </ul>
+{{ end }}
+  {{ end }}

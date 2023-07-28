@@ -1,98 +1,85 @@
 backend:
   name: git-gateway
-  repo: Suryavasudevan/LearnHugo
-  branch: main
+  branch: dev
 
-media_folder: "/static/img"
+media_folder: "site/static/img" # Folder where user uploaded files should go
 public_folder: "/img"
-logo_url: https://masalaglitz.in/images/malasaglitz-logo.png
-publish_mode: editorial_workflow
 
-editor:
-   preview: false
+local_backend: true
 
-collections:
-  - name: "cinema"
-    label: "Cinema"
-    label_singular: 'Cinema Post' # Used in the UI, ie: "New Post"
-    folder: "content/cinema/posts"
-    media_folder: '/static/images/{{year}}/{{month}}/{{day}}'
-    public_folder: '/images/{{year}}/{{month}}/{{day}}'
-    create: true
-    sortable_fields: ['date', 'heading']
-    identifier_field: heading
-    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
-    fields:
-      - {label: "Title", name: "heading", widget: "string"}
-      - {label: "Featured Image", name: "preview_image", widget: "image"}
-      - {label: "Image Resize", name: "image_resize", widget: "hidden", default: "/cdn-cgi/image/w=640,fit=scale-down,q=80,f=auto"}
-      - {label: "Categories", name: "categories", widget: "hidden", default: "cinema"} # {label: "Categories", name: "categories", widget: "select", options: ["cinema", "trending", "gallery", "sports"]}
-      - {label: "Author", name: "authors", widget: "hidden", default: "Santhosh"}  # {label: "Author", name: "authors", widget: "select", options: ["Santhosh", "Ramachandran", "Sivakumar", "Aravindh"]}
-      - {label: "Tags", name: "tags", widget: "list", hint: "Vijay&#x2C; Ajith Kumar&#x2C; IPL&#x2C; DMK"}
-      - {label: "URL Slug", name: "title", widget: "string"}
-      - {label: "Content", name: "body", widget: "markdown"}
-      - {label: "Embed Code", name: "code", widget: "string", required: false}
-      - {label: "Publish Date", name: "date", widget: "datetime", date_format: 'YYYY-MM-DD', time_format: 'HH:mm:ss', format: 'YYYY-MM-DD HH:mm:ss +0530', picker_utc: true}
-  - name: "trending"
-    label: "Trending"
-    label_singular: 'Trending Post' # Used in the UI, ie: "New Post"
-    folder: "content/trending/posts"
-    media_folder: '/static/images/{{year}}/{{month}}/{{day}}'
-    public_folder: '/images/{{year}}/{{month}}/{{day}}'
-    create: true
-    sortable_fields: ['date', 'heading']
-    identifier_field: heading
-    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
-    fields:
-      - {label: "Title", name: "heading", widget: "string"}
-      - {label: "Featured Image", name: "preview_image", widget: "image"}
-      - {label: "Image Resize", name: "image_resize", widget: "hidden", default: "/cdn-cgi/image/w=640,fit=scale-down,q=80,f=auto"}
-      - {label: "Categories", name: "categories", widget: "hidden", default: "trending"} # {label: "Categories", name: "categories", widget: "select", options: ["trending", "trending", "gallery", "sports"]}
-      - {label: "Author", name: "authors", widget: "hidden", default: "Ramachandran"}  # {label: "Author", name: "authors", widget: "select", options: ["Santhosh", "Ramachandran", "Sivakumar", "Aravindh"]}
-      - {label: "Tags", name: "tags", widget: "list", hint: "Vijay&#x2C; Ajith Kumar&#x2C; IPL&#x2C; DMK"}
-      - {label: "URL Slug", name: "title", widget: "string"}
-      - {label: "Content", name: "body", widget: "markdown"}
-      - {label: "Embed Code", name: "code", widget: "string", required: false}
-      - {label: "Publish Date", name: "date", widget: "datetime", date_format: 'YYYY-MM-DD', time_format: 'HH:mm:ss', format: 'YYYY-MM-DD HH:mm:ss +0530', picker_utc: true}
-  - name: "gallery"
-    label: "Gallery"
-    label_singular: 'Gallery Post' # Used in the UI, ie: "New Post"
-    folder: "content/gallery/posts"
-    media_folder: '/static/images/{{year}}/{{month}}/{{day}}'
-    public_folder: '/images/{{year}}/{{month}}/{{day}}'
-    create: true
-    sortable_fields: ['date', 'heading']
-    identifier_field: heading
-    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
-    fields:
-      - {label: "Title", name: "heading", widget: "string"}
-      - {label: "Featured Image", name: "preview_image", widget: "image"}
-      - {label: "Image Resize", name: "image_resize", widget: "hidden", default: "/cdn-cgi/image/w=640,fit=scale-down,q=80,f=auto"}
-      - {label: "Categories", name: "categories", widget: "hidden", default: "gallery"} # {label: "Categories", name: "categories", widget: "select", options: ["gallery", "trending", "gallery", "sports"]}
-      - {label: "Author", name: "authors", widget: "hidden", default: "Sivakumar"}  # {label: "Author", name: "authors", widget: "select", options: ["Santhosh", "Ramachandran", "Sivakumar", "Aravindh"]}
-      - {label: "Tags", name: "tags", widget: "list", hint: "Vijay&#x2C; Ajith Kumar&#x2C; IPL&#x2C; DMK"}
-      - {label: "URL Slug", name: "title", widget: "string"}
-      - {label: "Content", name: "body", widget: "markdown"}
-      - {label: "Embed Code", name: "code", widget: "string", required: false}
-      - {label: "Publish Date", name: "date", widget: "datetime", date_format: 'YYYY-MM-DD', time_format: 'HH:mm:ss', format: 'YYYY-MM-DD HH:mm:ss +0530', picker_utc: true}
-  - name: "sports"
-    label: "Sports"
-    label_singular: 'Sports Post' # Used in the UI, ie: "New Post"
-    folder: "content/sports/posts"
-    media_folder: '/static/images/{{year}}/{{month}}/{{day}}'
-    public_folder: '/images/{{year}}/{{month}}/{{day}}'
-    create: true
-    sortable_fields: ['date', 'heading']
-    identifier_field: heading
-    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
-    fields:
-      - {label: "Title", name: "heading", widget: "string"}
-      - {label: "Featured Image", name: "preview_image", widget: "image"}
-      - {label: "Image Resize", name: "image_resize", widget: "hidden", default: "/cdn-cgi/image/w=640,fit=scale-down,q=80,f=auto"}
-      - {label: "Categories", name: "categories", widget: "hidden", default: "sports"} # {label: "Categories", name: "categories", widget: "select", options: ["sports", "trending", "gallery", "sports"]}
-      - {label: "Author", name: "authors", widget: "hidden", default: "Aravindh"}  # {label: "Author", name: "authors", widget: "select", options: ["Santhosh", "Ramachandran", "Sivakumar", "Aravindh"]}
-      - {label: "Tags", name: "tags", widget: "list", hint: "Vijay&#x2C; Ajith Kumar&#x2C; IPL&#x2C; DMK"}
-      - {label: "URL Slug", name: "title", widget: "string"}
-      - {label: "Content", name: "body", widget: "markdown"}
-      - {label: "Embed Code", name: "code", widget: "string", required: false}
-      - {label: "Publish Date", name: "date", widget: "datetime", date_format: 'YYYY-MM-DD', time_format: 'HH:mm:ss', format: 'YYYY-MM-DD HH:mm:ss +0530', picker_utc: true}
+collections: # A list of collections the CMS should be able to edit
+  - name: "post" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Post" # Used in the UI, ie.: "New Post"
+    folder: "site/content/post" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Intro Blurb", name: "description", widget: "text"}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "site/content/_index.md"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Subtitle, name: subtitle, widget: string}
+          - {label: Image, name: image, widget: image}
+          - {label: "Blurb", name: blurb, widget: object, fields: [
+              {label: "Heading", name: "heading", widget: string},
+              {label: "Text", name: "text", widget: "text"}]}
+          - {label: "Intro", name: intro, widget: object, fields: [
+              {label: "Heading", name: "heading", widget: string},
+              {label: "Text", name: "text", widget: "text"}]}
+          - {label: "Products", name: products, widget: list, fields: [
+              {label: "Image", name: "image", widget: "image"},
+              {label: "Text", name: "text", widget: "text"}]}
+          - {label: "Values", name: "values", widget: "object", fields: [
+              {label: "Heading", name: "heading", widget: string},
+              {label: "Text", name: "text", widget: "text"}]}
+      - file: "site/content/contact/_index.md"
+        label: "Contact Page"
+        name: "contact"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Logo, name: logo, widget: image}
+          - {label: Body, name: body, widget: markdown}
+          - label: Contact Entries
+            name: contact_entries
+            widget: list
+            fields:
+              - label: Heading
+                name: heading
+                widget: string
+              - label: Text
+                name: text
+                widget: text
+      - file: "site/content/products/_index.md"
+        label: "Products Page"
+        name: "products"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Image, name: image, widget: image}
+          - {label: Heading, name: heading, widget: string}
+          - {label: Description, name: description, widget: string}
+          - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
+          - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
+          - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
+          - {label: Full_image, name: full_image, widget: image}
+          - {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: string}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string}, {label: Price, name: price, widget: string}, {label: Description, name: description, widget: string}, {label: Items, name: items, widget: list}]}]}
+      - file: "site/content/values/_index.md"
+        label: "Values Page"
+        name: "values"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Image, name: image, widget: image}
+          - label: Values
+            name: values
+            widget: list
+            fields:
+              - {label: Heading, name: heading, widget: string}
+              - {label: Text, name: text, widget: text}
+              - {label: Image, name: imageUrl, widget: image}

@@ -1,7 +1,6 @@
 backend:
   name: git-gateway
-  repo: Suryavasudevan/LearnHugo
-  branch: main
+  branch: dev
 
 media_folder: "/static/img"
 public_folder: "/img"

@@ -14,13 +14,24 @@ local_backend: true
 
 collections: # A list of collections the CMS should be able to edit
   - name: "cinema" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Cinema" # Used in the UI, ie.: "New Post"
+    label: "Cinema Posts" # Used in the UI, ie.: "New Post"
+    label_singular: "Cinema Post"
     folder: "site/content/cinema/posts" # The path to the folder where the documents are stored
-    media_folder: '/site/static/images/{{year}}/{{month}}/{{day}}'
-    public_folder: '/site/images/{{year}}/{{month}}/{{day}}'
-    create: true # Allow users to create new documents in this collection
-    identifier_field: heading
     slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    media_folder: '/site/static/images/{{year}}/{{month}}/{{day}}'
+    public_folder: '/images/{{year}}/{{month}}/{{day}}'
+    media_library:
+      max_file_size: 400
+    identifier_field: heading
+    sortable_fields:
+      fields: ['date', 'heading']
+      default:
+        field: date
+        direction: Descending
+    summary_fields:
+      - heading
+      - date
+    create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
       - {label: "Title", name: "heading", widget: "string"}
       - {label: "Featured Image", name: "preview_image", widget: "image"}
@@ -30,5 +41,5 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Tags", name: "tags", widget: "list", hint: "Vijay&#x2C; Ajith Kumar&#x2C; IPL&#x2C; DMK"}
       - {label: "URL Slug", name: "title", widget: "string"}
       - {label: "Content", name: "body", widget: "markdown"}
-      - {label: "Embed Code", name: "code", widget: "code", required: false}
+      - {label: "Embed Code", name: "code", widget: "string", required: false}
       - {label: "Publish Date", name: "date", widget: "datetime", date_format: 'dd.MM.yyyy', time_format: 'HH:mm:ss', format: 'yyyy-MM-dd HH:mm:ss +0530', picker_utc: true}

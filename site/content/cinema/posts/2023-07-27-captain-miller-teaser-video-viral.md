@@ -1,6 +1,7 @@
 ---
 heading: "கில்லர் கில்லர் கேப்டன் மில்லர்.. மிரட்டல்.. பிரியங்கா கையையும் 'கன்'.
   லேட்டஸ்ட் வீடியோ வைரல். "
+title: captain-miller-teaser-video-viral
 preview_image: /images/2023/07/27/captain-miller-teaser-video-viral-1-.jpg
 image_resize: /cdn-cgi/image/w=640,fit=scale-down,q=80,f=auto
 categories: cinema
@@ -9,7 +10,7 @@ tags:
   - Dhanush
   - Priyanka Mohan
   - Trailer
-title: captain-miller-teaser-video-viral
+  - Test
 code: <iframe width="560" height="315"
   src="https://www.youtube.com/embed/bSkOF-mEbUU" title="YouTube video player"
   frameborder="0" allow="accelerometer; autoplay; clipboard-write;

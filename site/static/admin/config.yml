@@ -54,10 +54,6 @@ collections: # A list of collections the CMS should be able to edit
         label: Author
         widget: hidden
         default: "Santhosh" # {label: "Author", name: "authors", widget: "select", options: ["Santhosh", "Ramachandran", "Sivakumar", "Aravindh"]}
-      - name: tags
-        label: Tags
-        widget: list
-        hint: "Example: Vijay, Ajith Kumar, IPL, DMK"
       - name: body
         label: Content
         widget: markdown

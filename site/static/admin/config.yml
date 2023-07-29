@@ -62,8 +62,6 @@ collections: # A list of collections the CMS should be able to edit
             - bold
             - italic
             - font
-            - image
-            - file-link
       - name: tags
         label: Tags
         widget: list

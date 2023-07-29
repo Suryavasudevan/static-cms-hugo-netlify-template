@@ -26,5 +26,5 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Tags", name: "tags", widget: "list", hint: "Vijay&#x2C; Ajith Kumar&#x2C; IPL&#x2C; DMK"}
       - {label: "URL Slug", name: "title", widget: "string"}
       - {label: "Content", name: "body", widget: "markdown"}
-      - {label: "Embed Code", name: "code", widget: "string", required: false}
-      - {label: "Publish Date", name: "date", widget: "datetime", date_format: 'YYYY-MM-DD', time_format: 'HH:mm:ss', format: 'YYYY-MM-DD HH:mm:ss +0530', picker_utc: true}
+      - {label: "Embed Code", name: "code", widget: "code", required: false}
+      - {label: "Publish Date", name: "date", widget: "datetime", date_format: 'yyyy-mm-dd', time_format: 'HH:mm:ss', format: 'yyyy-mm-dd HH:mm:ss +0530', picker_utc: true}

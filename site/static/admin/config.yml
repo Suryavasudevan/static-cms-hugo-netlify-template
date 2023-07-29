@@ -13,36 +13,75 @@ editor:
 local_backend: true
 
 collections: # A list of collections the CMS should be able to edit
-  - name: "cinema" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Cinema Posts" # Used in the UI, ie.: "New Post"
-    label_singular: "Cinema Post"
-    folder: "site/content/cinema/posts" # The path to the folder where the documents are stored
-    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
-    media_folder: '/site/static/images/{{year}}/{{month}}/{{day}}'
-    public_folder: '/images/{{year}}/{{month}}/{{day}}'
-    media_library:
-      max_file_size: 512000
-    identifier_field: heading
-    sortable_fields:
-      fields: ['date', 'heading']
-      default:
-        field: date
-        direction: Descending
-    summary_fields:
-      - heading
-      - date
-    create: true # Allow users to create new documents in this collection
-    fields: # The fields each document in this collection have
-      - {label: "Title", name: "heading", widget: "string"}
-      - {label: "URL Slug", name: "title", widget: "string"}
-      - {label: "Featured Image", name: "preview_image", widget: "image"}
-      - {label: "Image Resize", name: "image_resize", widget: "hidden", default: "/cdn-cgi/image/w=640,fit=scale-down,q=80,f=auto"}
-      - {label: "Categories", name: "categories", widget: "hidden", default: "cinema"} # {label: "Categories", name: "categories", widget: "select", options: ["cinema", "trending", "gallery", "sports"]}
-      - {label: "Author", name: "authors", widget: "hidden", default: "Santhosh"}  # {label: "Author", name: "authors", widget: "select", options: ["Santhosh", "Ramachandran", "Sivakumar", "Aravindh"]}
-      - {label: "Tags", name: "tags", widget: "list", hint: "Example: Vijay, Ajith Kumar, IPL, DMK"}
-      - {label: "Content", name: "body", widget: "markdown"}
-      - {label: "Embed Code", name: "code", widget: "string", required: false}
-      - {label: "Publish Date", name: "date", widget: "datetime", date_format: 'dd.MM.yyyy', time_format: 'HH:mm:ss', format: 'yyyy-MM-dd HH:mm:ss +0530', picker_utc: true}
+      - name: "cinema" # Used in routes, ie.: /admin/collections/:slug/edit
+        label: "Cinema Posts" # Used in the UI, ie.: "New Post"
+        label_singular: "Cinema Post"
+        folder: "site/content/cinema/posts" # The path to the folder where the documents are stored
+        slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+        media_folder: '/site/static/images/{{year}}/{{month}}/{{day}}'
+        public_folder: '/images/{{year}}/{{month}}/{{day}}'
+        media_library:
+          max_file_size: 512000
+        identifier_field: heading
+        sortable_fields:
+          fields: ['date', 'heading']
+          default:
+            field: date
+            direction: Descending
+        summary_fields:
+          - heading
+          - date
+        create: true # Allow users to create new documents in this collection
+        fields: # The fields each document in this collection have
+      - name: heading
+        label: Title
+        widget: string
+
+      - name: title
+        label: URL Slug
+        widget: string
+
+      - name: preview_image
+        label: Featured Image
+        widget: image
+
+      - name: image_resize
+        label: Image Resize
+        widget: hidden
+        default: "/cdn-cgi/image/w=640,fit=scale-down,q=80,f=auto"
+
+      - name: categories
+        label: Categories
+        widget: hidden
+        default: "cinema" # {label: "Categories", name: "categories", widget: "select", options: ["cinema", "trending", "gallery", "sports"]}
+
+      - name: authors
+        label: Author
+        widget: hidden
+        default: "Santhosh" # {label: "Author", name: "authors", widget: "select", options: ["Santhosh", "Ramachandran", "Sivakumar", "Aravindh"]}
+
+      - name: tags
+        label: Tags
+        widget: list
+        hint: "Example: Vijay, Ajith Kumar, IPL, DMK"
+
+      - name: body
+        label: Content
+        widget: markdown
+
+      - name: code
+        label: Embed Code
+        widget: string
+        required: false
+
+      - name: date
+        label: Publish Date
+        widget: datetime
+        date_format: 'dd.MM.yyyy'
+        time_format: 'HH:mm:ss'
+        format: 'yyyy-MM-dd HH:mm:ss +0530'
+        picker_utc: true
+
       - name: comma_separated_list
         label: Comma Separated List
         widget: list

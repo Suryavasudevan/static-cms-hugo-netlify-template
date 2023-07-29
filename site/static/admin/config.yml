@@ -57,6 +57,13 @@ collections: # A list of collections the CMS should be able to edit
       - name: body
         label: Content
         widget: markdown
+        toolbar_buttons:
+              main:
+                - bold
+                - italic
+                - font
+                - image
+                - file-link
       - name: tags
         label: Tags
         widget: list

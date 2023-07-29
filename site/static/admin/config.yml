@@ -4,11 +4,10 @@ backend:
 
 media_folder: "/static/img"
 public_folder: "/img"
-logo_url: https://masalaglitz.in/images/malasaglitz-logo.png
-publish_mode: editorial_workflow
 
-editor:
-   preview: false
+logo_url: https://masalaglitz.in/images/malasaglitz-logo.png
+
+local_backend: true
 
 collections:
   - name: "cinema"

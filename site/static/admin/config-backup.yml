@@ -1,0 +1,96 @@
+backend:
+  name: git-gateway
+  branch: dev
+
+media_folder: "/static/img"
+public_folder: "/img"
+
+logo_url: https://masalaglitz.in/images/malasaglitz-logo.png
+
+local_backend: true
+
+collections:
+  - name: "cinema"
+    label: "Cinema"
+    label_singular: 'Cinema Post' # Used in the UI, ie: "New Post"
+    folder: "content/cinema/posts"
+    media_folder: '/static/images/{{year}}/{{month}}/{{day}}'
+    public_folder: '/images/{{year}}/{{month}}/{{day}}'
+    create: true
+    sortable_fields: ['date', 'heading']
+    identifier_field: heading
+    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    fields:
+      - {label: "Title", name: "heading", widget: "string"}
+      - {label: "Featured Image", name: "preview_image", widget: "image"}
+      - {label: "Image Resize", name: "image_resize", widget: "hidden", default: "/cdn-cgi/image/w=640,fit=scale-down,q=80,f=auto"}
+      - {label: "Categories", name: "categories", widget: "hidden", default: "cinema"} # {label: "Categories", name: "categories", widget: "select", options: ["cinema", "trending", "gallery", "sports"]}
+      - {label: "Author", name: "authors", widget: "hidden", default: "Santhosh"}  # {label: "Author", name: "authors", widget: "select", options: ["Santhosh", "Ramachandran", "Sivakumar", "Aravindh"]}
+      - {label: "Tags", name: "tags", widget: "list", hint: "Vijay&#x2C; Ajith Kumar&#x2C; IPL&#x2C; DMK"}
+      - {label: "URL Slug", name: "title", widget: "string"}
+      - {label: "Content", name: "body", widget: "markdown"}
+      - {label: "Embed Code", name: "code", widget: "string", required: false}
+      - {label: "Publish Date", name: "date", widget: "datetime", date_format: 'YYYY-MM-DD', time_format: 'HH:mm:ss', format: 'YYYY-MM-DD HH:mm:ss +0530', picker_utc: true}
+  - name: "trending"
+    label: "Trending"
+    label_singular: 'Trending Post' # Used in the UI, ie: "New Post"
+    folder: "content/trending/posts"
+    media_folder: '/static/images/{{year}}/{{month}}/{{day}}'
+    public_folder: '/images/{{year}}/{{month}}/{{day}}'
+    create: true
+    sortable_fields: ['date', 'heading']
+    identifier_field: heading
+    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    fields:
+      - {label: "Title", name: "heading", widget: "string"}
+      - {label: "Featured Image", name: "preview_image", widget: "image"}
+      - {label: "Image Resize", name: "image_resize", widget: "hidden", default: "/cdn-cgi/image/w=640,fit=scale-down,q=80,f=auto"}
+      - {label: "Categories", name: "categories", widget: "hidden", default: "trending"} # {label: "Categories", name: "categories", widget: "select", options: ["trending", "trending", "gallery", "sports"]}
+      - {label: "Author", name: "authors", widget: "hidden", default: "Ramachandran"}  # {label: "Author", name: "authors", widget: "select", options: ["Santhosh", "Ramachandran", "Sivakumar", "Aravindh"]}
+      - {label: "Tags", name: "tags", widget: "list", hint: "Vijay&#x2C; Ajith Kumar&#x2C; IPL&#x2C; DMK"}
+      - {label: "URL Slug", name: "title", widget: "string"}
+      - {label: "Content", name: "body", widget: "markdown"}
+      - {label: "Embed Code", name: "code", widget: "string", required: false}
+      - {label: "Publish Date", name: "date", widget: "datetime", date_format: 'YYYY-MM-DD', time_format: 'HH:mm:ss', format: 'YYYY-MM-DD HH:mm:ss +0530', picker_utc: true}
+  - name: "gallery"
+    label: "Gallery"
+    label_singular: 'Gallery Post' # Used in the UI, ie: "New Post"
+    folder: "content/gallery/posts"
+    media_folder: '/static/images/{{year}}/{{month}}/{{day}}'
+    public_folder: '/images/{{year}}/{{month}}/{{day}}'
+    create: true
+    sortable_fields: ['date', 'heading']
+    identifier_field: heading
+    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    fields:
+      - {label: "Title", name: "heading", widget: "string"}
+      - {label: "Featured Image", name: "preview_image", widget: "image"}
+      - {label: "Image Resize", name: "image_resize", widget: "hidden", default: "/cdn-cgi/image/w=640,fit=scale-down,q=80,f=auto"}
+      - {label: "Categories", name: "categories", widget: "hidden", default: "gallery"} # {label: "Categories", name: "categories", widget: "select", options: ["gallery", "trending", "gallery", "sports"]}
+      - {label: "Author", name: "authors", widget: "hidden", default: "Sivakumar"}  # {label: "Author", name: "authors", widget: "select", options: ["Santhosh", "Ramachandran", "Sivakumar", "Aravindh"]}
+      - {label: "Tags", name: "tags", widget: "list", hint: "Vijay&#x2C; Ajith Kumar&#x2C; IPL&#x2C; DMK"}
+      - {label: "URL Slug", name: "title", widget: "string"}
+      - {label: "Content", name: "body", widget: "markdown"}
+      - {label: "Embed Code", name: "code", widget: "string", required: false}
+      - {label: "Publish Date", name: "date", widget: "datetime", date_format: 'YYYY-MM-DD', time_format: 'HH:mm:ss', format: 'YYYY-MM-DD HH:mm:ss +0530', picker_utc: true}
+  - name: "sports"
+    label: "Sports"
+    label_singular: 'Sports Post' # Used in the UI, ie: "New Post"
+    folder: "content/sports/posts"
+    media_folder: '/static/images/{{year}}/{{month}}/{{day}}'
+    public_folder: '/images/{{year}}/{{month}}/{{day}}'
+    create: true
+    sortable_fields: ['date', 'heading']
+    identifier_field: heading
+    slug: "{{year}}-{{month}}-{{day}}-{{title}}"
+    fields:
+      - {label: "Title", name: "heading", widget: "string"}
+      - {label: "Featured Image", name: "preview_image", widget: "image"}
+      - {label: "Image Resize", name: "image_resize", widget: "hidden", default: "/cdn-cgi/image/w=640,fit=scale-down,q=80,f=auto"}
+      - {label: "Categories", name: "categories", widget: "hidden", default: "sports"} # {label: "Categories", name: "categories", widget: "select", options: ["sports", "trending", "gallery", "sports"]}
+      - {label: "Author", name: "authors", widget: "hidden", default: "Aravindh"}  # {label: "Author", name: "authors", widget: "select", options: ["Santhosh", "Ramachandran", "Sivakumar", "Aravindh"]}
+      - {label: "Tags", name: "tags", widget: "list", hint: "Vijay&#x2C; Ajith Kumar&#x2C; IPL&#x2C; DMK"}
+      - {label: "URL Slug", name: "title", widget: "string"}
+      - {label: "Content", name: "body", widget: "markdown"}
+      - {label: "Embed Code", name: "code", widget: "string", required: false}
+      - {label: "Publish Date", name: "date", widget: "datetime", date_format: 'YYYY-MM-DD', time_format: 'HH:mm:ss', format: 'YYYY-MM-DD HH:mm:ss +0530', picker_utc: true}

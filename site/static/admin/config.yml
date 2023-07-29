@@ -13,11 +13,9 @@ collections: # A list of collections the CMS should be able to edit
   - name: "cinema" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Cinema" # Used in the UI, ie.: "New Post"
     folder: "site/content/cinema/posts" # The path to the folder where the documents are stored
-    media_folder: '/static/images/{{year}}/{{month}}/{{day}}'
-    public_folder: '/images/{{year}}/{{month}}/{{day}}'
+    media_folder: 'site/static/images/{{year}}/{{month}}/{{day}}'
+    public_folder: 'site/images/{{year}}/{{month}}/{{day}}'
     create: true # Allow users to create new documents in this collection
-    sortable_fields: ['date', 'heading']
-    identifier_field: heading
     slug: "{{year}}-{{month}}-{{day}}-{{title}}"
     fields: # The fields each document in this collection have
       - {label: "Title", name: "heading", widget: "string"}

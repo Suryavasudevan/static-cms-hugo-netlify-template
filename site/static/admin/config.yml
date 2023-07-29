@@ -58,12 +58,12 @@ collections: # A list of collections the CMS should be able to edit
         label: Content
         widget: markdown
         toolbar_buttons:
-              main:
-                - bold
-                - italic
-                - font
-                - image
-                - file-link
+          main:
+            - bold
+            - italic
+            - font
+            - image
+            - file-link
       - name: tags
         label: Tags
         widget: list

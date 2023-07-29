@@ -21,7 +21,7 @@ collections: # A list of collections the CMS should be able to edit
     media_folder: '/site/static/images/{{year}}/{{month}}/{{day}}'
     public_folder: '/images/{{year}}/{{month}}/{{day}}'
     media_library:
-      max_file_size: 400
+      max_file_size: 512000
     identifier_field: heading
     sortable_fields:
       fields: ['date', 'heading']
@@ -34,12 +34,29 @@ collections: # A list of collections the CMS should be able to edit
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
       - {label: "Title", name: "heading", widget: "string"}
+      - {label: "URL Slug", name: "title", widget: "string"}
       - {label: "Featured Image", name: "preview_image", widget: "image"}
       - {label: "Image Resize", name: "image_resize", widget: "hidden", default: "/cdn-cgi/image/w=640,fit=scale-down,q=80,f=auto"}
       - {label: "Categories", name: "categories", widget: "hidden", default: "cinema"} # {label: "Categories", name: "categories", widget: "select", options: ["cinema", "trending", "gallery", "sports"]}
       - {label: "Author", name: "authors", widget: "hidden", default: "Santhosh"}  # {label: "Author", name: "authors", widget: "select", options: ["Santhosh", "Ramachandran", "Sivakumar", "Aravindh"]}
-      - {label: "Tags", name: "tags", widget: "list", hint: "Vijay&#x2C; Ajith Kumar&#x2C; IPL&#x2C; DMK"}
-      - {label: "URL Slug", name: "title", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list", hint: "Example: Vijay, Ajith Kumar, IPL, DMK"}
       - {label: "Content", name: "body", widget: "markdown"}
       - {label: "Embed Code", name: "code", widget: "string", required: false}
       - {label: "Publish Date", name: "date", widget: "datetime", date_format: 'dd.MM.yyyy', time_format: 'HH:mm:ss', format: 'yyyy-MM-dd HH:mm:ss +0530', picker_utc: true}
+      - name: comma_separated_list
+        label: Comma Separated List
+        widget: list
+      - name: delimiter_separated_list
+        label: Custom Delimiter (Semicolon) Separated List
+        widget: list
+        delimiter: ';'
+        default:
+          - 'tag-1'
+          - 'tag-2'
+      - name: string_list
+        label: String List
+        widget: list
+        fields:
+          - label: Tag
+            name: tag
+            widget: string

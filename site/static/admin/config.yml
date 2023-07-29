@@ -2,9 +2,6 @@ backend:
   name: git-gateway
   branch: dev
 
-media_folder: "/static/img"
-public_folder: "/img"
-
 logo_url: https://masalaglitz.in/images/malasaglitz-logo.png
 
 editor:
@@ -57,14 +54,6 @@ collections: # A list of collections the CMS should be able to edit
       - name: body
         label: Content
         widget: markdown
-        toolbar_buttons:
-          main:
-            - bold
-            - italic
-            - font
-            - label: Insert
-              groups:
-                - items: ['image', 'file-link']
       - name: tags
         label: Tags
         widget: list
